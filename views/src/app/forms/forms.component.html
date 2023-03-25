@@ -1,0 +1,32 @@
+<form [formGroup]="form" class="col-4 offset-3 " (ngSubmit)="data(form.value)">
+    <input type="text" placeholder="username" class="form-control mt-2 mb-2" formControlName="username">
+    <div formGroupName="subject">
+        <div>
+            <input type="number" name="" formControlName="sub1" class="form-control mt-2 mb-2" placeholder="sub1"
+                (ngModelChange)="sum()">
+            <div *ngIf="form.get('subject.sub1')?.invalid && form.get('subject.sub1')?.touched">
+                <span *ngIf="form.get('subject.sub1')?.errors?.['required']">Field is Requred</span>
+                <span *ngIf="form.get('subject.sub1')?.errors?.['min']">min 1</span>
+                <span *ngIf="form.get('subject.sub1')?.errors?.['max']">max 100</span>
+            </div>
+        </div>
+        <input type="number" name="" formControlName="sub2" class="form-control" placeholder="sub2"
+            (ngModelChange)="sum()">
+        <input type="number" name="" formControlName="sub3" class="form-control mt-2 mb-2" placeholder="sub3"
+            (ngModelChange)="sum()">
+        <input type="number" name="" formControlName="sub5" class="form-control" placeholder="sub5"
+            (ngModelChange)="sum()">
+        <input type="number" name="" formControlName="sub4" class="form-control" placeholder="sub4"
+            (ngModelChange)="sum()">
+    </div>
+    <input type="text" name="" formControlName="total" [disabled]="true" class="form-control" value="{{totalvalue}}"
+        placeholder="total">
+    <input type="tel" formControlName="phonenumber" placeholder="phonenumber" class="form-control">
+
+    <input type="date" name="" id="" class="form-control" formControlName="date" (ngModelChange)="ageCalculator()">
+    <input type="text" name="" id="" class="form-control" [disabled]="true" value="{{showAge}}" formControlName="ages">
+    <input type="text" name="" id="" class="form-control" [disabled]="true" value="{{citizenship}}" formControlName="citizen">
+    <button class="btn btn-primary mt-3 offset-8" [disabled]="form.invalid">Submit</button>
+</form>
+
+<app-search></app-search>
